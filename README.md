@@ -7,55 +7,33 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+<h1 align="center">Huellitas API - Backend para Veterinaria</h1> 
+API desarrollada en Laravel que ofrece un backend robusto y seguro para la gestión integral de la veterinaria Huellitas. Esta API expone endpoints para manejar autenticación, gestión de citas y usuarios, todo a través de una arquitectura de servicios limpia y escalable.
+Escalable a:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Carrito de ventas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Login público para servicio a clientes
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<h2 align="center">Características principales</h2>
 
-## Learning Laravel
+- Backend completo: 
+API RESTful desarrollada en Laravel que actúa como el backend para la aplicación de la veterinaria.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Autenticación con Sanctum: Seguridad y manejo de tokens para autenticación de usuarios, con endpoints protegidos.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Conexión a MySQL: La base de datos usada es MySQL, donde se almacena toda la información.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+<h3 align="center">Arquitectura basada en servicios</h3>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+- Controller: recibe la request, valida los datos y delega la lógica al servicio correspondiente.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Service Provider: funciona como intermediario para inyectar servicios en los controladores mediante singletons, permitiendo escalabilidad y fácil mantenimiento.
 
-## Contributing
+- Servicio: contiene la lógica para ejecutar queries, procedimientos almacenados (SP), funciones escalares, etc., directamente en la base de datos. Solo retorna resultados o confirma ejecuciones exitosas.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- NO ORM: la lógica de negocio y consultas complejas están implementadas en la base de datos mediante procedimientos almacenados; el backend solo ejecuta llamados directos a la base, manteniendo el código backend limpio y enfocado en la validación y enrutamiento.
+- Router de Laravel: Se usa el sistema de rutas nativo de Laravel para definir endpoints agrupados y organizados.
+- Mensajería automatizada con Brevo (SMTP): Integración para envíos automáticos de emails, notificaciones y confirmaciones.
